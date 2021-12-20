@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict'
+        
+        let sum = String(prompt("Введите сумму, которую хотите положить на счет: "));
+        while(Number(sum) <= 0 || isNaN(Number(sum)))
+        {
+            sum = String(prompt("Вы ввели некорректное число. Попробуйте еще раз: "));
+        }
+        let strLength = sum.length;
+        let lastSymbol = sum.charAt(strLength - 1);
+        let rub = null;
+        switch(lastSymbol)
+        {
+            case "1":
+                rub = " рубль "
+                break;
+            case "2":
+            case "3":
+            case "4":
+                rub = " рубля "
+                break;
+            case "5":
+            case "6":
+            case "7":
+            case "8":
+            case "9":
+            case "0":
+                rub = " рублей "
+                break;
+            default:
+                throw new Error("Такого числа не существует.");
+        }
+
+        alert("Ваша сумма в " + sum + rub + "успешно зачислена.")
+
+    </script>
+</body>
+</html>
