@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict'
+        
+        class UserNumber
+        {
+            constructor(units, tens, hunders)
+            {
+                this.units = units;
+                this.tens = tens;
+                this.hunders = hunders;
+            }
+        }
+
+        function makeObjectNumber(num)
+        {
+            let units;
+            let tens; 
+            let hunders;
+
+            if(num === "")
+            {
+                return new UserNumber(units, tens, hunders);
+            }
+
+            let n = num / 10;
+
+            if(n > 10)
+            {
+                hunders =  Math.floor(num / 100);
+                tens = Math.floor((num - hunders * 100) / 10);
+                units = num % 10;
+            }
+            else if(n > 0)
+            {
+                hunders = 0;
+                tens = Math.floor(num / 10);
+                units = num % 10;
+            }
+            else
+            {
+                hunders = 0;
+                tens = 0;
+                units = num;
+            }
+
+            return new UserNumber(units, tens, hunders);
+        }
+
+
+        let num = prompt("Введите целое число от 0 до 999: ");
+        if(isNaN(parseInt(num)))
+        {
+            console.log("Вы ввели не число.")
+            num = "";
+        }
+        else if(!Number.isInteger(+num))
+        {
+            console.log("Вы ввели не целое число.")
+            num = "";
+        }
+
+        console.log(makeObjectNumber(num));
+        
+    </script>
+</body>
+</html>
